@@ -301,22 +301,7 @@ namespace CefBrowserWrapper
             EventHandler<LoadingStateChangedEventArgs> handler = null;
             handler = (sender, args) =>
             {
-                //try
-                //{
-                //    Console.WriteLine("handler");
-                //    //var script = "function foo(){return document.readyState;}foo()";
-                   
-                //    //Task<JavascriptResponse> result = Browser.EvaluateScriptAsync(script);
-                //    //result.Wait();
-                //    //if (result.Result.Success && result.Result.Result != null)
-                //    //    Console.WriteLine(result.Result.Result.ToString());
-                //}
-                //catch 
-                //{
-                    
-                //}
-                
-                //Console.WriteLine());
+               
                 if (!args.IsLoading)
                 {
                     Browser.LoadingStateChanged -= handler;
@@ -473,108 +458,10 @@ namespace CefBrowserWrapper
         protected virtual void SendKeyCore(string xpath, long charCode)
         {
             throw new NotImplementedException();
-            // Gecko imp,ementation is below
-            // can try just sending js event
-            // smth like this: https://stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically 
-            // Swyat feedback on popularity : http://joxi.ru/n2YwyRLIezYqPr
-            //  очень редко, например при выборе значения в SELECT иногда только кликом получается выбрать значения и потом чтобы закрыть select для продолжения сценария нажимаю enter, иногда кнопка "Поиска" не нажимается и после заполнения формы ENTER нажимаю.
-            //nsIDOMWindowUtils utils = Xpcom.QueryInterface<nsIDOMWindowUtils>(browser.Window.DomWindow);
-            //using (nsAString type = new nsAString("keypress"))
-            //{
-            //    //https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIDOMWindowUtils
-            //    long modifiers = 0;
-            //    string modifstr = string.Empty;
-            //    if ((browserActionSetting as SendKeyBrowserActionSetting).ControlKeyOn)
-            //    {
-            //        modifiers += nsIDOMWindowUtilsConsts.MODIFIER_CONTROL;
-            //        modifstr = "Control";
-            //    }
-            //    if ((browserActionSetting as SendKeyBrowserActionSetting).AltKeyOn)
-            //    {
-            //        modifiers += nsIDOMWindowUtilsConsts.MODIFIER_ALT;
-            //        modifstr = "Alt";
-            //    }
-            //    if ((browserActionSetting as SendKeyBrowserActionSetting).ShiftKeyOn)
-            //    {
-            //        modifiers += nsIDOMWindowUtilsConsts.MODIFIER_SHIFT;
-            //        modifstr = "Shift";
-            //    }
-
-            //    int charKeyCode = KeyToCharConverter.getCharByKeyName(
-            //            (browserActionSetting as SendKeyBrowserActionSetting).CharCode.ToString());
-
-            //    if ((browserActionSetting as SendKeyBrowserActionSetting).CharCode.ToString().Length > 1)
-            //    {
-            //        using (
-            //    nsAString characters = new nsAString("keypress"),
-            //        unmodifiedCharaters = new nsAString(modifstr))
-            //        {
-            //            utils.SendNativeKeyEvent(0, charKeyCode, (int)modifiers,
-            //                characters, unmodifiedCharaters, null);
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        using (
-            //   nsAString characters = new nsAString("keypress"),
-            //       unmodifiedCharaters = new nsAString(modifstr))
-            //        {
-            //            utils.SendNativeKeyEvent(0, charKeyCode, (int)modifiers,
-            //                      characters, unmodifiedCharaters, null);
-            //        }
-            //    }
-
-
-            //}
+            
         }
 
-        //protected abstract CefSettingsBase CreateCefSettings();
-        //public virtual void SetProxy(string proxy)
-        //{
-
-        //    if (!string.IsNullOrEmpty(proxy))
-        //    {
-        //        string login = string.Empty;
-        //        string password = string.Empty;
-        //        string address = string.Empty;
-        //        string port = string.Empty;
-
-        //        string[] proxyStringSeparated = proxy.Split(':');
-        //        if (proxyStringSeparated.Length == 2)
-        //        {
-        //            address = proxyStringSeparated[0].Trim();
-        //            port = proxyStringSeparated[1].Trim();
-
-        //            Browser.RequestHandler = new RequestHandler();
-        //        }
-        //        else if (proxyStringSeparated.Length == 4)
-        //        {
-        //            address = proxyStringSeparated[0].Trim();
-        //            port = proxyStringSeparated[1].Trim();
-        //            login = proxyStringSeparated[2];
-        //            password = proxyStringSeparated[3];
-
-        //            Browser.RequestHandler = new ProxyAuthRequestHandler(login, password);
-        //        }
-        //        //Browser.RequestContext.SetPreference();
-        //        if (!Cef.IsInitialized) Cef.Initialize(CreateCefSettings());
-        //        Cef.UIThreadTaskFactory.StartNew(delegate
-        //        {
-        //            var rc = Browser.GetBrowser().GetHost().RequestContext;
-        //            var v = new Dictionary<string, object>();
-        //            v["mode"] = "fixed_servers";
-        //            v["server"] = string.Format("http://{0}:{1}", address, port);
-        //            //v["server"] = string.Format("{0}:{1}", address, port);
-        //            string error;
-        //            bool success = Browser.RequestContext.SetPreference("proxy", v, out error);
-        //            if (!success)
-        //            {
-        //                throw new WebException("Îøèáêà ïðîêñè: " + error);
-        //            }
-        //        });
-        //    }
-        //}
+      
         public virtual void SendKey(string xpath, long charCode)
 
         {
@@ -590,94 +477,7 @@ namespace CefBrowserWrapper
 
         public virtual void SelectListOption()
         {
-            //string valueToSelect = prepareValue((browserActionSetting as SelectListOptionBrowserActionSetting).TargetValue);
-
-            //#region Find element
-
-            //GeckoHtmlElement element = getDomObjectByXpath((browserActionSetting as ElementRelatedBrowserActionSettingBase));
-
-            //#endregion
-
-            //string originalValue = "";
-
-            //try
-            //{
-            //    originalValue = (element as GeckoSelectElement).Value;
-            //}
-            //catch
-            //{
-
-            //}
-
-            //#region Select option
-
-            //#region By index
-
-            //if ((browserActionSetting as SelectListOptionBrowserActionSetting).TargetIndex > -1)
-            //{
-            //    for (uint i = 0; i < (element as GeckoSelectElement).Options.Length; i++)
-            //    {
-            //        GeckoOptionElement item = (element as GeckoSelectElement).Options.Item(i);
-
-            //        if (item.Index == Convert.ToInt32(
-            //            (browserActionSetting as SelectListOptionBrowserActionSetting).TargetIndex))
-            //        {
-            //            item.Selected = true;
-            //            break;
-            //        }
-            //    }
-            //}
-            //#endregion
-
-            //#region By value
-
-            //else
-            //{
-            //    ComparerFactory comparerFactory = new ComparerFactory();
-            //    ComparerBase comparer = comparerFactory.getInstance(
-            //        (browserActionSetting as SelectListOptionBrowserActionSetting).RegexCompare
-            //        );
-
-            //    for (uint i = 0; i < (element as GeckoSelectElement).Options.Length; i++)
-            //    {
-            //        GeckoOptionElement item = (element as GeckoSelectElement).Options.Item(i);
-
-            //        if (comparer.compare(item.Text,
-            //            valueToSelect))
-            //        {
-            //            item.Selected = true;
-            //            break;
-            //        }
-            //    }
-
-            //}
-
-            //#endregion
-
-            //#endregion
-
-            //#region Send event
-
-
-            ////nsAStringBase changeEvent = new nsAString("change");
-            //// DomEventArgs eventArgs = browser.Document.CreateEvent("MouseEvent");
-            //// eventArgs.DomEvent.InitEvent(changeEvent, true, true);
-            //// element.GetEventTarget().DispatchEvent(eventArgs);
-
-            //#endregion
-
-
-            //#region Проверим если исходное и текущее значение одинаковые, причем они отличаются от того, которое нужно было установить, выдадим предупреждение
-            //if ((element as GeckoSelectElement).Value == originalValue)
-            ////&&
-            ////!comparer.compare(originalValue,
-            ////    valueToSelect))
-            //{
-            //    logger.AddEventToLog(LogLevel.Warning,
-            //        Common.Action_ + browserActionSetting.Name.ToString() + Common.semicolon_SelectedValueWasNotChanged, currentInput);
-            //}
-            //#endregion
-
+            
         }
 
         public virtual int GetHtmlElementCount(string xPath)
@@ -710,54 +510,5 @@ namespace CefBrowserWrapper
 
 
         }
-
-        //public virtual int GetHtmlElementCountCore(string xPath)
-        //{
-
-        //    //HtmlElementInfo[] results;
-        //    //let query = document.evaluate(xpath, parent || document,
-        //    //    null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-        //    //for (let i = 0, length = query.snapshotLength; i < length; ++i)
-        //    //{
-        //    //    results.push(query.snapshotItem(i));
-        //    //}
-        //    //return results;
-
-        //    //EvaluateScript(string.Format("var el = document.evaluate('{0}', document, null, XPathResult.ANY_TYPE, null).iterateNext(); el.scrollIntoView();", xpath.Replace('\'', '\"')),
-        //    //    1000); ORDERED_NODE_SNAPSHOT_TYPE
-
-        //    //" + xPath.Replace('\'', '\"') +
-        //    int retVal = 0;
-        //    var script =
-        //        "function foo(){let xPathResult = document.evaluate('" + xPath.Replace('\'', '\"') + "', document, null, XPathResult.ANY_TYPE, null);" +
-        //        "let nodes = [];  let node = xPathResult.iterateNext();" +
-        //        "while (node) { nodes.push(node); node = xPathResult.iterateNext();} return nodes.map(x => ({outerHTML: x.outerHTML}));}foo()";
-
-        //    //var script = "function foo(){const nodes = [];return nodes;}foo();";
-
-        //    Task<JavascriptResponse> result = Browser.EvaluateScriptAsync(script);
-        //    result.Wait();
-        //    //if (result.Result.Success && result.Result.Result != null)
-        //    //    retVal = Convert.ToInt32(result.Result.Result);
-
-        //    List<object> abc = (List<object>)result.Result.Result;
-        //    foreach (System.Dynamic.ExpandoObject item in abc)
-        //    {
-        //        // Console.WriteLine(item._data.ToString());
-
-        //        IDictionary<string, object> propertyValues = item;
-
-        //        foreach (var property in propertyValues.Keys)
-        //        {
-        //            //retVal.Add(new HtmlElementInfo(propertyValues[property].ToString()));
-        //            break;
-        //            //Console.WriteLine(String.Format("{0} : {1}", property, propertyValues[property]));
-        //        }
-        //    }
-
-
-
-        //    return retVal;
-        //}
     }
 }

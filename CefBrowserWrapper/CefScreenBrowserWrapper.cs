@@ -41,18 +41,6 @@ namespace CefBrowserWrapper
 
         
 
-
-        //tried this for saving cache to folder, however havent successed
-        //more info here https://www.evernote.com/l/AeBZjmMOpFVBVqyK-_5YdU--em5FKY2g95o/
-        //requestContextSettings.PersistSessionCookies = true;
-        //requestContextSettings.PersistUserPreferences = true;
-        //requestContextSettings.CachePath = BrowserInfo.GetCacheFolder();
-
-        //public virtual void UpdateBrowserObject(BrowserInfo browserInfo, BrowserSettings browserSettings)
-        //{
-        //    BrowserInfo = browserInfo;
-        //}
-
         public override void CreateBrowserObject(BrowserSettings browserSetting)
         {
             
@@ -104,44 +92,7 @@ namespace CefBrowserWrapper
         }
 
 
-        //protected override Task InitializationWaiter(IWebBrowser browser)
-        //{
-        //    return Task.FromResult(true);
-
-        //    Task retVal = null;
-        //    //if (Form != null) Form.Invoke(new Action(delegate
-        //    //{
-        //        while (!browser.IsBrowserInitialized)
-        //        {
-        //            //await Task.Delay(TimeSpan.FromMilliseconds(300));
-        //            Thread.Sleep(300);
-        //        }
-        //    //}));
-        //    return Task.FromResult(true);
-
-        //    if (browser.IsBrowserInitialized)
-        //            retVal = Task.FromResult(true);
-        //        else
-        //        {
-        //            var tcs = new TaskCompletionSource<bool>();
-        //            EventHandler handler = null;
-        //            handler = (sender, args) =>
-        //            {
-        //                if (browser.IsBrowserInitialized)
-        //                {
-        //                    (browser as ChromiumWebBrowser).IsBrowserInitializedChanged -= handler;
-
-        //                    tcs.TrySetResultAsync(true);
-        //                }
-        //            };
-
-        //            (browser as ChromiumWebBrowser).IsBrowserInitializedChanged += handler;
-        //            retVal = tcs.Task;
-        //        }
-        //   // }));
-
-        //    return retVal;
-        //}
+       
 
         public override void Dispose()
         {
@@ -175,14 +126,5 @@ namespace CefBrowserWrapper
 
         }
 
-        //public void CheckIsStillWaitingNavigated()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void StartNavigate(string url)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

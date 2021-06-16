@@ -44,12 +44,12 @@ namespace CefSample
                 Task.Run(
                              () =>
                              {
-                                 while (true)
-                                 {
+                                 //while (true)
+                                 //{
                                      var browser2 = _factory.Create(true, true, 10000, new SingleBrowserInfo("", ""));
                                      browser2.LoadUrl("http://webasyst.synoparser.ru/index.php?ukey=product&productID=4460");
-                                 }
-                                 Thread.Sleep(3000);
+                                 //}
+                                 //Thread.Sleep(3000);
                              });
             }).Start();
             
