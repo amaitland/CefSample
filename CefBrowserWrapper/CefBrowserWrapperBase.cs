@@ -239,7 +239,7 @@ namespace CefBrowserWrapper
                     //Form.ShowLoadProgressBar((Browser as CefSharp.WinForms.ChromiumWebBrowser), true);
                     try
                     {
-                        Thread.Sleep(1000);
+                        
                         LoadUrlCore(url);
                         string title = ExtractTitleFromPageCode(GetHtmlCore());
                         

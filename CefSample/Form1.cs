@@ -47,7 +47,8 @@ namespace CefSample
                                  //while (true)
                                  //{
                                      var browser2 = _factory.Create(true, true, 10000, new SingleBrowserInfo("", ""));
-                                     browser2.LoadUrl("http://webasyst.synoparser.ru/index.php?ukey=product&productID=4460");
+                                 browser2.LoadUrl("http://webasyst.synoparser.ru/index.php?ukey=product&productID=4460");
+                                 // browser2.LoadUrl("chrome://inducebrowsercrashforrealz");
                                  //}
                                  //Thread.Sleep(3000);
                              });
