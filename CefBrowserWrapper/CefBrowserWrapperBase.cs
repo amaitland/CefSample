@@ -293,6 +293,37 @@ namespace CefBrowserWrapper
            
         }
 
+        public virtual async Task LoadUrlCoreAsync(string url)
+        {
+            if (string.IsNullOrEmpty(url)) return;
+
+            var tcs = new TaskCompletionSource<bool>();
+            EventHandler<LoadingStateChangedEventArgs> handler = null;
+            handler = (sender, args) =>
+            {
+
+                if (!args.IsLoading)
+                {
+                    Browser.LoadingStateChanged -= handler;
+                    tcs.TrySetResultAsync(true);
+                }
+            };
+
+            Browser.LoadingStateChanged += handler;
+            if (!string.IsNullOrEmpty(url))
+            {
+                Browser.Load(url);
+            }
+
+            if (await Task.WhenAny(tcs.Task, Task.Delay(LoadTimeoutMs)) == tcs.Task)
+            {
+                await tcs.Task;
+            }
+            else
+            {
+                throw new TimeoutException("Load timeout");
+            }
+        }
         public virtual void LoadUrlCore(string url)
         {
             if (String.IsNullOrEmpty(url)) return;
