@@ -1,6 +1,6 @@
 ﻿namespace CefBrowserWrapper
 {
-    partial class Form1
+    partial class BrowserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowserForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.SuspendLayout();
             // 
@@ -49,9 +49,7 @@
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "(Chromium)";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Text = "Tabbed Form";
             this.ResumeLayout(false);
 
         }
